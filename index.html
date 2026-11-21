@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+ <p id="pura"></p>
+ <button onclick="jokes()">Generate Joke</button>
+
+ <script>
+
+   let jokes = async()=>{
+    var jokes_para = document.getElementById('para')
+    var response = await fetch('https://v2.jokeapi.dev/joke/Any?blacklistFlags=religious,political')
+   var data = await response.json();
+   //console.log(data.json)();
+   if(data.joke == undefined){
+    jokes_para.innerHTML = data.setup +"<br>"+ data.delivery
+   }else{
+    jokes_para.innerHTML = data.joke
+   }
+   }
+ </script>
+</body>
+</html>
